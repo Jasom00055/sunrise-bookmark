@@ -36,7 +36,7 @@
 <li>把下方的書籤程式碼完整貼到「網址」欄位，取代原本網址，然後儲存。</li>
 <li>進入日出之國遊戲頁面，確認遊戲已載入，再從網址列輸入書籤名稱或從書籤清單點選它。</li>
 </ol><p class="muted">若手機版 Chrome 不方便直接點書籤，可在網址列輸入「日出之國工具」，從自動完成的書籤項目中點選。</p></section>
-<section class="section" id="bookmark"><h2>書籤程式碼</h2><p>以下是日出之國工具的啟動書籤程式碼。加入瀏覽器書籤後，即可在遊戲頁面啟動工具。</p><div class="codebox" id="bookmarklet">javascript:(()=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/Jasom00055/sunrise-bookmark@main/sunrise.js';s.onerror=()=>alert('載入失敗，請檢查網路或網址');document.head.appendChild(s)})();</div><button class="copy" onclick="copyBookmarklet()">複製書籤程式碼</button><span id="copyStatus" class="muted" aria-live="polite"></span><p class="muted">複製後請貼到書籤的「網址」欄位，不是貼在一般網頁的搜尋框。</p></section>
+<section class="section" id="bookmark"><h2>書籤程式碼</h2><p>以下是日出之國工具的啟動書籤程式碼。加入瀏覽器書籤後，即可在遊戲頁面啟動工具。</p><div class="codebox" id="bookmarklet">javascript:(()=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/Jasom00055/sunrise-bookmark@main/sunrise.js?t='+Date.now();s.onerror=()=>alert('載入失敗，請檢查網路或網址');document.head.appendChild(s)})();</div><button class="copy" onclick="copyBookmarklet()">複製書籤程式碼</button><span id="copyStatus" class="muted" aria-live="polite"></span><p class="muted">複製後請貼到書籤的「網址」欄位，不是貼在一般網頁的搜尋框。</p></section>
 
 <section class="section faq" id="faq"><h2>常見問題</h2>
 <details><summary>點選書籤後沒有反應？</summary><p class="muted">確認你是在遊戲頁面執行、遊戲已完成載入，並確認手機網路可連線到 jsDelivr。也可重新整理遊戲後再試。</p></details>
