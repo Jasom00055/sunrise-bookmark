@@ -1,12 +1,12 @@
-
 javascript:(()=>{
 try{
-const old=document.getElementById('sunrise-admin');
-if(old){old.remove();return;}
-
 const SUNRISE_BUILD='2026-11-07T18:33:00+08:00';
-const CURRENCY_CAP=4503599627370495;
 window.__sunriseBuildTimestamp=SUNRISE_BUILD;
+
+const old=document.getElementById('sunrise-admin');
+if(old)old.remove();
+
+const CURRENCY_CAP=4503599627370495;
 
 const p=document.createElement('div');
 p.id='sunrise-admin';
