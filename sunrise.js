@@ -1,3 +1,4 @@
+
 javascript:(()=>{
 try{
 const old=document.getElementById('sunrise-admin');
