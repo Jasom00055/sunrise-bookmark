@@ -43,6 +43,7 @@ code{color:#f3d38f}
 </style>
 </head>
 <body>
+
 <header class="hero wrap">
   <div class="eyebrow">SUNRISE KINGDOM · BOOKMARK TOOL</div>
   <h1>日出之國<br>書籤工具使用說明</h1>
@@ -57,6 +58,7 @@ code{color:#f3d38f}
 </header>
 
 <main class="wrap">
+
 <section class="section" id="about">
 <h2>工具簡介</h2>
 <p>這是一個透過瀏覽器書籤載入的 JavaScript 小工具。進入遊戲頁面後，點選你建立的書籤，即可載入外部腳本並顯示管理面板。</p>
@@ -92,33 +94,43 @@ code{color:#f3d38f}
 
 <section class="section" id="bookmark">
 <h2>書籤程式碼</h2>
-<p>以下是日出之國工具的新版啟動書籤程式碼。加入瀏覽器書籤後，即可在遊戲頁面啟動工具。</p>
+<p>以下是目前測試使用的固定版本啟動書籤程式碼。加入瀏覽器書籤後，即可在遊戲頁面啟動工具。</p>
 
-<div class="codebox" id="bookmarklet">javascript:(()=>{const old=document.getElementById('sunrise-admin');if(old)old.remove();window.__sunriseBuildTimestamp=null;const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/Jasom00055/sunrise-bookmark@main/sunrise.js?t='+Date.now();s.onload=()=>{if(window.__sunriseBuildTimestamp!=='2026-11-07T18:33:00+08:00')alert('程式已載入，但版本標記不符，請重新整理遊戲後再試');};s.onerror=()=>alert('GitHub 程式載入失敗，請檢查網路或網址');(document.head||document.documentElement).appendChild(s)})();</div>
+<div class="codebox" id="bookmarklet">javascript:(()=>{const old=document.getElementById('sunrise-admin');if(old)old.remove();window.__sunriseBuildTimestamp=null;const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/Jasom00055/sunrise-bookmark@dedebff971d20b9be25f8486100222a7f3e554b7/sunrise.js?t='+Date.now();s.onload=()=>{if(window.__sunriseBuildTimestamp!=='2026-11-07T18:33:00+08:00')alert('版本標記不符，請回報');};s.onerror=()=>alert('GitHub 程式載入失敗，請檢查網路');(document.head||document.documentElement).appendChild(s)})();</div>
 
 <button class="copy" onclick="copyBookmarklet()">複製新版書籤程式碼</button>
 <span id="copyStatus" class="muted" aria-live="polite"></span>
-<p class="muted">複製後請貼到書籤的「網址」欄位，不是貼在一般網頁的搜尋框。新版啟動碼會先移除舊面板，再載入 GitHub 上的 sunrise.js。</p>
+<p class="muted">複製後請貼到書籤的「網址」欄位，不是貼在一般網頁的搜尋框。啟動碼會先移除舊面板，再載入指定的 GitHub 程式版本。</p>
 </section>
 
 <section class="section faq" id="faq">
 <h2>常見問題</h2>
+
 <details>
 <summary>點選書籤後沒有反應？</summary>
 <p class="muted">確認你是在遊戲頁面執行、遊戲已完成載入，並確認手機網路可連線到 jsDelivr。也可重新整理遊戲後再試。</p>
 </details>
+
 <details>
 <summary>顯示「載入失敗」怎麼辦？</summary>
 <p class="muted">請先確認網路連線正常，並確認書籤程式碼已完整貼入書籤的「網址」欄位。重新整理遊戲頁面後，再試一次。</p>
 </details>
+
+<details>
+<summary>顯示「版本標記不符」怎麼辦？</summary>
+<p class="muted">代表載入後沒有讀取到預期的版本標記。請確認目前使用的是安裝網頁最新提供的書籤碼，並重新整理遊戲後再試。如果仍然發生，請回報目前使用的版本標記。</p>
+</details>
+
 <details>
 <summary>遊戲更新後工具不能用了？</summary>
 <p class="muted">遊戲更新可能更動內部資料結構或函式名稱，造成腳本不相容。需要依新版遊戲重新檢查並更新腳本。</p>
 </details>
+
 <details>
 <summary>工具之後更新，需要重新加入書籤嗎？</summary>
-<p class="muted">一般不需要重新加入。啟動碼會載入 GitHub 上 main 分支的最新版 sunrise.js。若工具載入異常，請先重新整理遊戲頁面，再重新點選書籤啟動。</p>
+<p class="muted">目前使用固定版本網址。若工具更新到新的 GitHub 版本，需要同步更新本頁的啟動書籤碼，再重新複製到瀏覽器書籤。</p>
 </details>
+
 </section>
 </main>
 
@@ -131,6 +143,7 @@ code{color:#f3d38f}
 function copyBookmarklet(){
   const t=document.getElementById('bookmarklet').textContent.trim();
   const status=document.getElementById('copyStatus');
+
   if(navigator.clipboard&&window.isSecureContext){
     navigator.clipboard.writeText(t)
       .then(()=>status.textContent=' 已複製！')
@@ -139,6 +152,7 @@ function copyBookmarklet(){
     fallbackCopy(t,status);
   }
 }
+
 function fallbackCopy(t,status){
   const el=document.createElement('textarea');
   el.value=t;
@@ -146,12 +160,14 @@ function fallbackCopy(t,status){
   el.style.opacity='0';
   document.body.appendChild(el);
   el.select();
+
   try{
     document.execCommand('copy');
     status.textContent=' 已複製！';
   }catch(e){
     status.textContent=' 請長按上方程式碼手動複製。';
   }
+
   el.remove();
 }
 </script>
